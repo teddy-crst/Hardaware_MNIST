@@ -210,7 +210,7 @@ def main():
     for o in plongee:
         print(f"  ⚑ {o['t'][:90]}  ({o['v'] or 'lieu non trouvé'})")
     print(f"\nFichier prêt : {OUTPUT_JSON.resolve()}")
-    print("Dépose-le dans l'onglet « Offres 26–27 » de la carte.")
+    print("Dépose-le dans l'onglet « Sujets AMeTICE » de la carte.")
 
 
 if __name__ == "__main__":

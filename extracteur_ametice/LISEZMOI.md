@@ -1,9 +1,18 @@
 # Extracteur AMeTICE — stages M2 Sciences de la Mer
 
 Récupère les fiches de stage du cours AMeTICE « Stage de M2 », puis prépare un
-fichier à déposer dans la carte des stages (onglet « Offres 26–27 »).
+fichier à déposer dans la carte des stages (onglet « Sujets AMeTICE »).
 
-## Installation
+## Le plus simple (Windows)
+
+Double-clique sur `lancer_extraction.bat`. Il installe ce qu'il faut dans un
+environnement `.venv` (une seule fois), ouvre AMeTICE dans Chromium pour que tu
+te connectes par l'ENT, extrait toutes les fiches, puis prépare
+`offres_ametice_carte.json` pour la carte. Si Windows affiche un avertissement
+SmartScreen, clique sur « Informations complémentaires » puis « Exécuter quand
+même ».
+
+## Installation manuelle
 
 ```
 pip install -r requirements.txt
@@ -42,7 +51,7 @@ python preparer_carte.py
 Produit `offres_ametice_carte.json` : titre nettoyé, laboratoire et ville
 déduits (du titre d'abord, sinon du texte de la fiche), coordonnées, mention de
 la plongée avec l'extrait, lien AMeTICE. Dépose ce fichier dans l'onglet
-« Offres 26–27 » de la carte.
+« Sujets AMeTICE » de la carte.
 
 ## Corrections par rapport à la première version
 
