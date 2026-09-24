@@ -5,12 +5,18 @@ fichier à déposer dans la carte des stages (onglet « Sujets AMeTICE »).
 
 ## Le plus simple (Windows)
 
-Double-clique sur `lancer_extraction.bat`. Il installe ce qu'il faut dans un
-environnement `.venv` (une seule fois), ouvre AMeTICE dans Chromium pour que tu
-te connectes par l'ENT, extrait toutes les fiches, puis prépare
-`offres_ametice_carte.json` pour la carte. Si Windows affiche un avertissement
-SmartScreen, clique sur « Informations complémentaires » puis « Exécuter quand
-même ».
+1. Clic droit sur `extracteur_ametice.zip`, puis « Extraire tout ». Ne lance pas
+   le fichier depuis l'intérieur du zip.
+2. Double-clique sur `lancer_extraction.bat` dans le dossier extrait. Si
+   Windows affiche « Windows a protégé votre ordinateur », clique sur
+   « Informations complémentaires » puis « Exécuter quand même ».
+3. Connecte-toi à l'ENT dans la fenêtre de navigateur qui s'ouvre, puis laisse
+   tourner.
+
+Le lanceur installe Python s'il manque (via winget), prépare un environnement
+`.venv`, installe les modules, utilise Microsoft Edge (ou le Chromium de
+Playwright), extrait toutes les fiches puis prépare `offres_ametice_carte.json`.
+En cas d'échec de l'installation, le détail est dans `installation_log.txt`.
 
 ## Installation manuelle
 

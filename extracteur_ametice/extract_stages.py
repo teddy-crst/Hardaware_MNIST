@@ -38,6 +38,10 @@ OUTPUT_XLSX = Path("stages_ametice.xlsx")
 
 HEADLESS = False
 
+# Navigateur : Microsoft Edge (présent sur tous les Windows) si
+# possible, sinon le Chromium installé par "playwright install".
+BROWSER_CHANNEL = "msedge"
+
 # Temps entre deux fiches pour ne pas marteler AMeTICE
 PAUSE_BETWEEN_STAGES = 0.6
 
@@ -822,6 +826,45 @@ def export_excel(results):
 
 
 # ============================================================
+# NAVIGATEUR
+# ============================================================
+
+def launch_browser(p):
+    channels = [BROWSER_CHANNEL, None] if BROWSER_CHANNEL else [None]
+
+    for channel in channels:
+        options = {
+            "user_data_dir": str(PROFILE_DIR),
+            "headless": HEADLESS,
+            "accept_downloads": True,
+            "viewport": {
+                "width": 1440,
+                "height": 900
+            }
+        }
+
+        if channel:
+            options["channel"] = channel
+
+        try:
+            return p.chromium.launch_persistent_context(
+                **options
+            )
+
+        except Exception as exc:
+            first_line = str(exc).strip().splitlines()[0] if str(exc).strip() else exc
+            print(
+                f"Navigateur {channel or 'Chromium'} indisponible : "
+                f"{first_line}"
+            )
+
+    raise SystemExit(
+        "Aucun navigateur utilisable : installe Chromium avec "
+        "'python -m playwright install chromium'."
+    )
+
+
+# ============================================================
 # PROGRAMME PRINCIPAL
 # ============================================================
 
@@ -838,14 +881,8 @@ def main():
 
     with sync_playwright() as p:
 
-        context = p.chromium.launch_persistent_context(
-            user_data_dir=str(PROFILE_DIR),
-            headless=HEADLESS,
-            accept_downloads=True,
-            viewport={
-                "width": 1440,
-                "height": 900
-            }
+        context = launch_browser(
+            p
         )
 
         if context.pages:
@@ -865,7 +902,7 @@ def main():
 
         print(
             "Si nécessaire, connecte-toi avec ton compte AMU "
-            "dans la fenêtre Chromium."
+            "dans la fenêtre du navigateur qui vient de s'ouvrir."
         )
 
         print(
