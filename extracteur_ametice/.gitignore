@@ -1,0 +1,9 @@
+# Profil Chromium : contient la session ENT (cookies). Ne jamais le publier.
+ametice_profile/
+
+# Sorties de l'extraction
+documents_stages/
+stages_ametice.csv
+stages_ametice.xlsx
+offres_ametice_carte.json
+__pycache__/
