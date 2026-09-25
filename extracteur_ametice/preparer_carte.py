@@ -37,7 +37,8 @@ LABOS = [
     (r"\bMIO\b.{0,25}Toulon|Toulon.{0,25}\bMIO\b", "MIO", "La Garde", 43.1360, 6.0140),
     (r"\bM\.?I\.?O\b|institut m[ée]diterran[ée]en d.oc[ée]anolog", "MIO", "Marseille — Luminy", 43.2327, 5.4400),
     (r"GIS Posidonie", "GIS Posidonie", "Marseille — Luminy", 43.2327, 5.4400),
-    (r"Septentrion", "Septentrion Environnement", "Marseille", 43.2415, 5.3790),
+    # « septentrionale » (= nord) ne désigne pas le bureau d'études
+    (r"\bSeptentrion\b(?!al)", "Septentrion Environnement", "Marseille", 43.2415, 5.3790),
     (r"Parc national des Calanques", "Parc national des Calanques", "Marseille", 43.2720, 5.3905),
     (r"\bCEREGE\b", "CEREGE", "Aix-en-Provence", 43.4880, 5.3310),
     (r"\bIMBE\b", "IMBE", "Marseille — Endoume", 43.2800, 5.3497),
@@ -99,7 +100,7 @@ VILLES = [
     ("Mayotte", -12.7806, 45.2279), ("La Réunion", -21.1151, 55.5364), ("Guadeloupe", 16.2650, -61.5510),
     ("Martinique", 14.6415, -61.0242), ("Cayenne", 4.9224, -52.3135), ("Guyane", 4.9224, -52.3135),
     ("Saint-Pierre-et-Miquelon", 46.7811, -56.1764), ("Barcelone", 41.3874, 2.1686), ("Barcelona", 41.3874, 2.1686),
-    ("Blanes", 41.6750, 2.8020), ("Gênes", 44.4056, 8.9463), ("Genova", 44.4056, 8.9463),
+    ("Blanes", 41.6750, 2.8020), ("Gênes", 44.4056, 8.9463), ("Genova", 44.4056, 8.9463), ("Genoa", 44.4056, 8.9463),
     ("Naples", 40.8518, 14.2681), ("Faro", 37.0440, -7.9720), ("Lisbonne", 38.7223, -9.1393),
     ("Milan", 45.4642, 9.1900), ("Bruxelles", 50.8503, 4.3517), ("Gand", 51.0543, 3.7174),
     ("Gent", 51.0543, 3.7174), ("České Budějovice", 48.9745, 14.4743), ("Oban", 56.4510, -5.4390),
